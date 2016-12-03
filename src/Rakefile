@@ -1,0 +1,5 @@
+task :default => [:Game]
+
+task :Game do
+  ruby "Game.rb"
+end
