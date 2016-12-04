@@ -10,7 +10,6 @@ class ItemSupplier
 
   def GetItemId()
     r = rand(1..100)
-    puts r
     case r
     when 1..30
       1
