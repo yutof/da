@@ -34,7 +34,6 @@ class Player
   def Purchase(item, price) 
     @budget -= price
     @items.push(item)
-    #item.Dump()
   end
 
   def CalculateBiddingPrice()

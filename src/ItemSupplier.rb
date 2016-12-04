@@ -1,7 +1,7 @@
 #!/usr/bin/ruby
 class ItemSupplier
   def initialize()
-    end
+  end
   
   def GetItem()
     i = GetItemId()

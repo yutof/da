@@ -15,7 +15,6 @@ class AuctionManager
     @ItemCounter.each do |k,v|
       if v > 3
         ended = true
-        #puts "GameEnded #{@counter}"
       end
     end
     ended
@@ -26,7 +25,6 @@ class AuctionManager
   end
 
   def PrintResult()
-    #puts "Print Result!!"
     @players.each{|p|p.Dump()}
   end 
   def Proceed()
@@ -39,7 +37,6 @@ class AuctionManager
   
   def SetPlayerItem(i)
     @players.each {|p| p.SetItem(i)}
-    #end
   end
 
   def UpdateItemcunter(i)
@@ -57,7 +54,7 @@ class AuctionManager
       if c > 0
         SellItemToHighestBidder(item)
       end
-      item.IncrementCounter()# += 1
+      item.IncrementCounter()
     end
   end
 
