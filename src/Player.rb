@@ -10,6 +10,13 @@ class Player
     @offeredPrice = 0
   end
 
+  def Budget
+    @budget
+  end
+
+  def ItemCount
+    @items.count
+  end
   def SetItem(item)
     @currentItem = item
     @offeredPrice = 0
@@ -53,7 +60,7 @@ class Player
   end
 
   def Dump()
-    s = "Player #{@id}  Points#{self.Point} Budget#{@budget}"
+    s = "Player(#{@id})  Points:#{self.Point} Budget:#{@budget}"
     puts s   
   end
 

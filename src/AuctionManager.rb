@@ -8,6 +8,44 @@ class AuctionManager
     @supplier = ItemSupplier.new()
     @ItemCounter = Hash.new
     @players = nil
+    @soldItemCount = 0
+    @dumpedItemCount = 0
+    @auctionCounter = 0
+  end
+
+  def Round
+    @counter
+  end
+
+  def AuctionCount
+    @auctionCounter
+  end
+
+  def SoldItemCount
+    @soldItemCount
+  end
+
+  def WinnersPurchaseRatio
+    self.WinnerItemCount.to_f/self.SoldItemCount.to_f * 100.0
+  end
+
+  def WinnerItemCount
+    i = 0
+    wp = self.WinnerPoint
+    @players.each{|p|i = p.ItemCount if p.Point == wp}
+    i 
+  end
+
+  def AverageRemainingBudget
+    t = 0
+    @players.each{|p|t += p.Budget}
+    t.to_f/@players.count.to_f
+  end 
+
+  def WinnerPoint
+    wp = -1
+    @players.each{|p|wp = p.Point if p.Point > wp}
+    wp
   end
 
   def isGameEnded
@@ -26,7 +64,9 @@ class AuctionManager
 
   def PrintResult()
     @players.each{|p|p.Dump()}
-  end 
+    puts "Round:#{@counter} Auction:#{@auctionCounter} Sold:#{@soldItemCount} Dumped:#{@dumpedItemCount}"
+  end
+ 
   def Proceed()
     @counter += 1
     i = GetItem()
@@ -55,7 +95,10 @@ class AuctionManager
         SellItemToHighestBidder(item)
       end
       item.IncrementCounter()
+      @auctionCounter += 1
     end
+    @soldItemCount += 1 if item.Sold
+    @dumpedItemCount += 1 if not item.Sold
   end
 
   def SellItemToHighestBidder(item)
@@ -76,7 +119,6 @@ class AuctionManager
     }
     player
   end
-
 
   def GetBiddingCount()
     c = 0
