@@ -48,6 +48,15 @@ class AuctionManager
     wp
   end
 
+  def LastItemKey
+    @ItemCounter.each do |k,v|
+      if v > 3
+        return k
+      end
+    end
+    return 0
+  end
+
   def isGameEnded
     ended = false
     @ItemCounter.each do |k,v|

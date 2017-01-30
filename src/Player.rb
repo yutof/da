@@ -1,5 +1,6 @@
 #!/usr/bin/ruy
 load 'Item.rb'
+load 'Request.rb'
 
 class Player
   def initialize(i)
@@ -8,8 +9,14 @@ class Player
     @items = Array.new
     @currentItem = nil
     @offeredPrice = 0
+    #getRequest()
+
   end
 
+  def getRequest()
+    Request.new
+  end
+ 
   def Budget
     @budget
   end
@@ -17,9 +24,16 @@ class Player
   def ItemCount
     @items.count
   end
+
   def SetItem(item)
     @currentItem = item
     @offeredPrice = 0
+  end
+
+  def SetRequests(r)
+  
+    r.each {|req| req.Dump()}
+    @requests = r
   end
 
   def BiddingPrice
