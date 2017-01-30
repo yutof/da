@@ -31,8 +31,6 @@ class Player
   end
 
   def SetRequests(r)
-  
-    r.each {|req| req.Dump()}
     @requests = r
   end
 

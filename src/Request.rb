@@ -16,7 +16,7 @@ class Request
   end
 
   def Dump()
-    #puts "Id :#{@itemId}  count:#{@count}"
+    puts "Id :#{@itemId}  count:#{@count}"
   end
     
 end
