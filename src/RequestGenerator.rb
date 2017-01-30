@@ -5,7 +5,6 @@ class RequestGenerator
 
   def initialize()
     @requests = GenerateRequests()
-    @requests.each { |i| i.Dump() }
   end 
 
   def GenerateRequests()
@@ -23,30 +22,5 @@ class RequestGenerator
 
   def Generate()
     @requests.pop()
-    #r = Request.new(GetRandomId(), GetRandomCount())
-    #r
   end
-
-  def GetRandomCount()
-    r = rand(1..100)
-    return 2 if r > 75
-    1
-  end
- 
-  def GetRandomId()
-    r = rand(1..80)
-    case r
-    when 1..20
-      1
-    when 21..45
-      2
-    when 46..58
-      3
-    when 59..70
-      4
-    when 71..80
-      5
-    end 
-  end
-
 end
